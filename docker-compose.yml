@@ -1,0 +1,70 @@
+version: "3.9"
+
+services:
+
+  # ── PostgreSQL — local data warehouse ──────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: pipeline_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       pipeline_db
+      POSTGRES_USER:     pipeline_user
+      POSTGRES_PASSWORD: changeme
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./config/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pipeline_user -d pipeline_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ── Inbound API server ──────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pipeline_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST:       postgres
+      DB_PORT:       5432
+      DB_NAME:       pipeline_db
+      DB_USER:       pipeline_user
+      DB_PASSWORD:   changeme
+      API_HOST:      0.0.0.0
+      API_PORT:      8000
+      LOG_LEVEL:     INFO
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+      - ./sample_data:/app/sample_data
+
+  # ── pgAdmin — visual DB explorer (optional, comment out if not needed) ──────
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pipeline_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL:    admin@pipeline.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    profiles:
+      - debug   # only starts with: docker compose --profile debug up
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    name: pipeline_network
