@@ -1,6 +1,6 @@
 import psycopg2
+from datetime import datetime, timezone
 from loaders.postgres_loader import PostgresLoader
-
 
 def get_connection():
     return psycopg2.connect(
@@ -10,8 +10,15 @@ def get_connection():
         password="changeme"
     )
 
-
-def load_to_db(df, table, primary_keys=None, mode="upsert"):
+def load_to_db(df, table, primary_keys=None, mode="upsert",
+               source_file="", source_format="", source_system="local_file"):
+    now = datetime.now(timezone.utc).isoformat()
+    df = df.assign(
+        _source_file=source_file,
+        _source_format=source_format,
+        _source_system=source_system,
+        _ingested_at=now
+    )
     conn = get_connection()
     try:
         loader = PostgresLoader(conn)
