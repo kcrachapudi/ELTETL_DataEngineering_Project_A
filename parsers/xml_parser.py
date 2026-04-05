@@ -75,9 +75,11 @@ class XMLParser(BaseParser):
         raise ParserError(f"Unsupported source type: {type(source)}")
 
     def _parse_xml(self, text: str) -> ET.Element:
-        # strip namespace declarations for simpler parsing
-        text = re.sub(r'\s+xmlns[^"]*"[^"]*"', "", text)
-        text = re.sub(r'\s+xmlns[^\']*\'[^\']*\'', "", text)
+        # strip all namespace declarations and prefixes for simpler parsing
+        text = re.sub(r'\s+xmlns(?::[a-zA-Z0-9_]+)?="[^"]*"', "", text)
+        text = re.sub(r'\s+xmlns(?::[a-zA-Z0-9_]+)?=\'[^\']*\'', "", text)
+        # strip namespace prefixes from element names e.g. soap:Envelope -> Envelope
+        text = re.sub(r'<(/?)([a-zA-Z0-9_]+):([a-zA-Z0-9_]+)', r'<\1\3', text)
         try:
             return ET.fromstring(text)
         except ET.ParseError as exc:

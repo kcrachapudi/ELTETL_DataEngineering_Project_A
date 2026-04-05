@@ -1,0 +1,71 @@
+{
+  "data": [
+    {
+      "id": "00u1a2b3c4d5e6f7g8h9",
+      "status": "ACTIVE",
+      "created": "2022-03-15T14:22:00.000Z",
+      "activated": "2022-03-15T14:22:01.000Z",
+      "lastLogin": "2024-01-14T08:45:22.000Z",
+      "lastUpdated": "2024-01-14T08:45:22.000Z",
+      "profile": {
+        "firstName": "John",
+        "lastName": "Smith",
+        "email": "john.smith@acmecorp.com",
+        "login": "john.smith@acmecorp.com",
+        "department": "Engineering",
+        "title": "Senior Engineer",
+        "manager": "jane.doe@acmecorp.com",
+        "mobilePhone": "+1-214-555-0101",
+        "city": "Dallas",
+        "state": "TX"
+      },
+      "credentials": {"provider": {"type": "OKTA", "name": "OKTA"}}
+    },
+    {
+      "id": "00u2b3c4d5e6f7g8h9i0",
+      "status": "ACTIVE",
+      "created": "2021-07-01T09:00:00.000Z",
+      "activated": "2021-07-01T09:00:01.000Z",
+      "lastLogin": "2024-01-15T07:30:00.000Z",
+      "lastUpdated": "2024-01-15T07:30:00.000Z",
+      "profile": {
+        "firstName": "Maria",
+        "lastName": "Garcia",
+        "email": "maria.garcia@acmecorp.com",
+        "login": "maria.garcia@acmecorp.com",
+        "department": "Finance",
+        "title": "Finance Manager",
+        "manager": "cfo@acmecorp.com",
+        "mobilePhone": "+1-972-555-0202",
+        "city": "Plano",
+        "state": "TX"
+      },
+      "credentials": {"provider": {"type": "OKTA", "name": "OKTA"}}
+    },
+    {
+      "id": "00u3c4d5e6f7g8h9i0j1",
+      "status": "DEPROVISIONED",
+      "created": "2020-01-10T10:00:00.000Z",
+      "activated": "2020-01-10T10:00:01.000Z",
+      "lastLogin": "2023-11-30T16:00:00.000Z",
+      "lastUpdated": "2024-01-01T00:00:00.000Z",
+      "profile": {
+        "firstName": "Robert",
+        "lastName": "Johnson",
+        "email": "r.johnson@acmecorp.com",
+        "login": "r.johnson@acmecorp.com",
+        "department": "Operations",
+        "title": "Operations Lead",
+        "manager": "ops.director@acmecorp.com",
+        "city": "Irving",
+        "state": "TX"
+      },
+      "credentials": {"provider": {"type": "OKTA", "name": "OKTA"}}
+    }
+  ],
+  "meta": {
+    "total": 3,
+    "page": 1,
+    "limit": 200
+  }
+}

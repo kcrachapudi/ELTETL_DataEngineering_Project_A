@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProductCatalog version="2.1" generated="2024-01-15T06:00:00Z" supplier="WIDGETS-INC">
+  <Metadata>
+    <SupplierName>Widgets Inc</SupplierName>
+    <SupplierID>SUPP-001</SupplierID>
+    <CatalogDate>2024-01-15</CatalogDate>
+    <TotalProducts>6</TotalProducts>
+  </Metadata>
+  <Products>
+    <Product id="WIDGET-A-001" active="true">
+      <SKU>WIDGET-A-001</SKU>
+      <VendorPart>SUPP-PART-AAA</VendorPart>
+      <Description>Blue Widget Type A 50-pack</Description>
+      <Category>Widgets</Category>
+      <UnitOfMeasure>EA</UnitOfMeasure>
+      <ListPrice>9.99</ListPrice>
+      <ContractPrice>8.50</ContractPrice>
+      <Currency>USD</Currency>
+      <LeadTimeDays>3</LeadTimeDays>
+      <MinOrderQty>10</MinOrderQty>
+      <Weight>0.25</Weight>
+      <WeightUnit>LB</WeightUnit>
+    </Product>
+    <Product id="WIDGET-B-002" active="true">
+      <SKU>WIDGET-B-002</SKU>
+      <VendorPart>SUPP-PART-BBB</VendorPart>
+      <Description>Red Widget Type B Economy</Description>
+      <Category>Widgets</Category>
+      <UnitOfMeasure>EA</UnitOfMeasure>
+      <ListPrice>4.50</ListPrice>
+      <ContractPrice>3.90</ContractPrice>
+      <Currency>USD</Currency>
+      <LeadTimeDays>5</LeadTimeDays>
+      <MinOrderQty>25</MinOrderQty>
+      <Weight>0.15</Weight>
+      <WeightUnit>LB</WeightUnit>
+    </Product>
+    <Product id="WIDGET-C-003" active="true">
+      <SKU>WIDGET-C-003</SKU>
+      <VendorPart>SUPP-PART-CCC</VendorPart>
+      <Description>Widget C Industrial Case of 24</Description>
+      <Category>Industrial</Category>
+      <UnitOfMeasure>CS</UnitOfMeasure>
+      <ListPrice>99.00</ListPrice>
+      <ContractPrice>87.50</ContractPrice>
+      <Currency>USD</Currency>
+      <LeadTimeDays>7</LeadTimeDays>
+      <MinOrderQty>1</MinOrderQty>
+      <Weight>6.50</Weight>
+      <WeightUnit>LB</WeightUnit>
+    </Product>
+    <Product id="GADGET-X-010" active="true">
+      <SKU>GADGET-X-010</SKU>
+      <VendorPart>SUPP-PART-DDD</VendorPart>
+      <Description>Gadget X Premium Model</Description>
+      <Category>Gadgets</Category>
+      <UnitOfMeasure>EA</UnitOfMeasure>
+      <ListPrice>19.99</ListPrice>
+      <ContractPrice>17.50</ContractPrice>
+      <Currency>USD</Currency>
+      <LeadTimeDays>2</LeadTimeDays>
+      <MinOrderQty>5</MinOrderQty>
+      <Weight>0.40</Weight>
+      <WeightUnit>LB</WeightUnit>
+    </Product>
+    <Product id="GADGET-Y-011" active="true">
+      <SKU>GADGET-Y-011</SKU>
+      <VendorPart>SUPP-PART-EEE</VendorPart>
+      <Description>Gadget Y Standard Edition</Description>
+      <Category>Gadgets</Category>
+      <UnitOfMeasure>EA</UnitOfMeasure>
+      <ListPrice>8.50</ListPrice>
+      <ContractPrice>7.25</ContractPrice>
+      <Currency>USD</Currency>
+      <LeadTimeDays>2</LeadTimeDays>
+      <MinOrderQty>20</MinOrderQty>
+      <Weight>0.20</Weight>
+      <WeightUnit>LB</WeightUnit>
+    </Product>
+    <Product id="SUPPLY-001" active="true">
+      <SKU>SUPPLY-001</SKU>
+      <VendorPart>SUPP-PART-FFF</VendorPart>
+      <Description>Medical Supply Kit Standard</Description>
+      <Category>Medical</Category>
+      <UnitOfMeasure>EA</UnitOfMeasure>
+      <ListPrice>45.00</ListPrice>
+      <ContractPrice>41.00</ContractPrice>
+      <Currency>USD</Currency>
+      <LeadTimeDays>1</LeadTimeDays>
+      <MinOrderQty>50</MinOrderQty>
+      <Weight>1.20</Weight>
+      <WeightUnit>LB</WeightUnit>
+    </Product>
+  </Products>
+</ProductCatalog>

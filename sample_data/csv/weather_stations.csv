@@ -1,0 +1,13 @@
+station_id,station_name,city,state,latitude,longitude,elevation_ft,active,installed_date
+WS-001,Dallas Love Field,Dallas,TX,32.8473,-96.8518,487,true,1998-03-15
+WS-002,DFW International,Fort Worth,TX,32.8998,-97.0403,603,true,2001-06-01
+WS-003,Addison Airport,Addison,TX,32.9687,-96.8364,644,true,2005-11-20
+WS-004,Mesquite Metro,Mesquite,TX,32.7470,-96.5298,447,true,2010-04-08
+WS-005,Arlington Municipal,Arlington,TX,32.6638,-97.0942,628,true,2003-09-12
+WS-006,Garland Regional,Garland,TX,32.9126,-96.6530,551,true,2007-02-28
+WS-007,Grand Prairie,Grand Prairie,TX,32.6877,-97.0436,598,true,2012-07-15
+WS-008,Plano Weather Post,Plano,TX,33.0198,-96.6989,672,true,2009-01-30
+WS-009,Irving Station,Irving,TX,32.8140,-96.9489,459,true,2006-05-17
+WS-010,McKinney Airport,McKinney,TX,33.1773,-96.5908,585,true,2015-08-22
+WS-011,Frisco North,Frisco,TX,33.1507,-96.8236,699,true,2018-03-05
+WS-012,Denton Enterprise,Denton,TX,33.2007,-97.1985,641,false,2000-10-10

@@ -1,0 +1,42 @@
+{
+  "event_type": "order.created",
+  "event_id": "evt-20240115-abc123",
+  "occurred_at": "2024-01-15T09:32:00Z",
+  "partner_id": "PARTNER-ACME",
+  "data": {
+    "order_id": "PO-98765",
+    "order_date": "2024-01-15",
+    "status": "submitted",
+    "currency": "USD",
+    "buyer": {
+      "name": "ACME Corporation",
+      "id": "BUYER-001",
+      "address": {
+        "street": "100 Main Street",
+        "city": "Dallas",
+        "state": "TX",
+        "zip": "75201"
+      }
+    },
+    "ship_to": {
+      "name": "ACME Warehouse",
+      "address": {
+        "street": "999 Warehouse Blvd",
+        "city": "Irving",
+        "state": "TX",
+        "zip": "75038"
+      }
+    },
+    "lines": [
+      {"line_number": "1", "product_id": "WIDGET-A-001", "description": "Blue Widget Type A", "quantity": 50, "unit_of_measure": "EA", "unit_price": 9.99, "line_total": 499.50},
+      {"line_number": "2", "product_id": "WIDGET-B-002", "description": "Red Widget Type B", "quantity": 100, "unit_of_measure": "EA", "unit_price": 4.50, "line_total": 450.00},
+      {"line_number": "3", "product_id": "WIDGET-C-003", "description": "Widget C Industrial Case", "quantity": 10, "unit_of_measure": "CS", "unit_price": 99.00, "line_total": 990.00}
+    ],
+    "order_total": 1939.50,
+    "notes": "Expedite shipping on Widget C"
+  },
+  "metadata": {
+    "source_system": "ACME-ERP",
+    "version": "2.1"
+  }
+}

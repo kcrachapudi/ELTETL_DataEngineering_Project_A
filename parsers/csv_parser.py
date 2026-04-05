@@ -116,7 +116,11 @@ class CSVParser(BaseParser):
             dialect = csv.Sniffer().sniff(sample, delimiters=",\t|;")
             return dialect.delimiter
         except csv.Error:
-            return ","
+            # manual fallback — count occurrences of each candidate
+            first_line = sample.split("\n")[0]
+            counts = {d: first_line.count(d) for d in [",", "\t", "|", ";"]}
+            best = max(counts, key=counts.__getitem__)
+            return best if counts[best] > 0 else ","
 
     def _clean(self, df: pd.DataFrame) -> pd.DataFrame:
         """Strip whitespace from column names and string values."""

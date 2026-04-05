@@ -1,0 +1,8 @@
+order_id|order_date|partner_id|product_id|product_description|quantity|unit_of_measure|unit_price|line_total|currency|ship_to_name|ship_to_city|ship_to_state
+ORD-2024-001|2024-01-15|PARTNER-ACME|WIDGET-A-001|Blue Widget Type A|50|EA|9.99|499.50|USD|ACME Warehouse|Dallas|TX
+ORD-2024-001|2024-01-15|PARTNER-ACME|WIDGET-B-002|Red Widget Type B|100|EA|4.50|450.00|USD|ACME Warehouse|Dallas|TX
+ORD-2024-001|2024-01-15|PARTNER-ACME|WIDGET-C-003|Widget C Industrial|10|CS|99.00|990.00|USD|ACME Warehouse|Dallas|TX
+ORD-2024-002|2024-01-16|PARTNER-ACME|GADGET-X-010|Gadget X Premium|25|EA|19.99|499.75|USD|ACME Store North|Plano|TX
+ORD-2024-002|2024-01-16|PARTNER-ACME|GADGET-Y-011|Gadget Y Standard|75|EA|8.50|637.50|USD|ACME Store North|Plano|TX
+ORD-2024-003|2024-01-17|PARTNER-BLUECROSS|SUPPLY-001|Medical Supply Kit|200|EA|45.00|9000.00|USD|BC Fulfillment Center|Irving|TX
+ORD-2024-003|2024-01-17|PARTNER-BLUECROSS|SUPPLY-002|Protective Equipment Set|500|EA|12.75|6375.00|USD|BC Fulfillment Center|Irving|TX
