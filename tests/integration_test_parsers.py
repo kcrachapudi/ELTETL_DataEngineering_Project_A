@@ -6,7 +6,7 @@ from parsers.edi_parser import EDIParser
 from parsers.edi_834_parser import EDI834Parser
 from parsers.edi_837_parser import EDI837Parser
 from parsers.edi_835_parser import EDI835Parser
-from parsers.edi_271_parser import EDI270Parser
+from parsers.edi_270_parser import EDI270Parser
 from parsers.edi_271_parser import EDI271Parser
 
 def test_csv_weather_stations():

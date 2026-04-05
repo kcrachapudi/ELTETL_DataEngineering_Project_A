@@ -1,4 +1,4 @@
-from tests.integration_test_parsers import * 
+from integration_test_parsers import * 
 from test_load_db import load_to_db
 
 sources = [
@@ -21,6 +21,8 @@ sources = [
     (test_edi_271,              "edi_271",             ["subscriber_id"],         "edi_271",     "sample_data/healthcare/health_edi/sample_270_271.edi"),
 ]
 
+print(f"Total sources: {len(sources)}")
+
 for fn, table, pkeys, fmt, src_file in sources:
     print(f"\n--- {table} ---")
     try:
@@ -36,4 +38,6 @@ for fn, table, pkeys, fmt, src_file in sources:
             source_system="local_file"
         )
     except Exception as e:
+        import traceback
         print(f"FAILED: {e}")
+        traceback.print_exc()

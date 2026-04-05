@@ -1,0 +1,10 @@
+#E — errors only
+#F — pyflakes (undefined names, bad imports)
+#F401 ignored — unused imports
+#F811 ignored — redefinition of unused name
+
+[lint]
+select = ["E", "F"]
+ignore = ["F401", "F811"]
+
+
