@@ -1,0 +1,33 @@
+To get a full folder structure diagram in Markdown (.md) format directly from VS Code on Linux, you have two primary options: using a built-in terminal command or installing a specialized extension.
+Option 1: Using the Linux Terminal (No Install Required)
+You can use the native Linux tree command within the VS Code integrated terminal (Ctrl + `).
+This is the fastest way to "spit out" a structure you can copy and paste. 
+Open the Terminal in VS Code.
+Run the following command to generate a clean ASCII tree:
+bash
+tree -a -I '.git|node_modules'
+
+-a: Includes hidden files.
+-I '.git|node_modules': Ignores folders you usually don't want in a diagram.
+To save it directly to a file, use the redirection operator:
+bash
+tree -a -I '.git|node_modules' > structure.md
+
+Format as Markdown: Open the new file and wrap the text in triple backticks (```) so it renders as a code block in your .md viewer. 
+Option 2: Using a VS Code Extension (Visual & Automated)
+If you want a one-click solution that automatically formats the output into Markdown, 
+you can install an extension from the Marketplace. 
+Draw Folder Structure:
+Usage: Right-click any folder in the Explorer sidebar and select "Generate Markdown structure".
+Result: It automatically copies a formatted tree to your clipboard and often opens it in a new tab for you to save.
+VSCode Folder Structure Generator:
+Usage: Open the Command Palette (Ctrl + Shift + P) and type "Generate Folder Structure". 
+Option 3: Diagrams as Code (Mermaid)
+If you want a more "graphical" diagram that lives inside your Markdown, use Mermaid.js syntax. VS Code has built-in support for rendering these previews. 
+markdown
+```mermaid
+graph TD
+    Root[Project Root] --> Src[src]
+    Root --> Docs[docs]
+    Src --> Auth[auth.py]
+    Src --> Main[main.py]
