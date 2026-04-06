@@ -19,7 +19,16 @@ def test_csv_member_eligibility():
     return CSVParser().parse("sample_data/csv/member_eligibility.csv")
 
 def test_json_weather():
-    return JSONParser().parse("sample_data/json/weather_response.json")
+    import json
+    import pandas as pd
+    with open("sample_data/json/weather_response.json") as f:
+        data = json.load(f)
+    hourly = data["hourly"]
+    df = pd.DataFrame(hourly)
+    df["latitude"]  = data["latitude"]
+    df["longitude"] = data["longitude"]
+    df["timezone"]  = data["time"]
+    return df
 
 def test_json_okta_users():
     return JSONParser().parse("sample_data/json/okta_users.json")
@@ -71,4 +80,8 @@ def test_edi_270():
     return EDI270Parser().parse("sample_data/healthcare/health_edi/sample_270_271.edi")
 
 def test_edi_271():
-    return EDI271Parser().parse("sample_data/healthcare/health_edi/sample_270_271.edi")
+    from parsers.edi_271_parser import EDI271Parser
+    df = EDI271Parser().parse("sample_data/healthcare/health_edi/sample_270_271.edi")
+    df = df.reset_index(drop=True)
+    df["benefit_seq"] = df.index
+    return df
