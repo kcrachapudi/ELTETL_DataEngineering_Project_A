@@ -1,6 +1,8 @@
 import sys
 from integration_test_parsers import test_edi_271, test_fixed_width_nacha
 from integration_test_parsers import test_xml_product_catalog, test_xml_soap_orders, test_json_weather
+import json
+import pandas as pd
 
 
 def test_json_weather():
@@ -12,19 +14,18 @@ def test_json_weather():
     df["latitude"]  = data["latitude"]
     df["longitude"] = data["longitude"]
     df["time"] = df["time"].str.strip()
-    
-    #print(df["time"].tolist())
-    print(df["hourly"].tolist())
-
     return df
  
-test_json_weather()
+df = test_json_weather()
+print(len(df))
+print(df.columns.tolist())
+print(df["time"].head(3).tolist())
+
 sys.exit(0)
 
 print("product_catalog:", test_xml_product_catalog().columns.tolist())
 print("soap_orders:", test_xml_soap_orders().columns.tolist())
 print("weather_json:", test_json_weather().columns.tolist())
-
 
 
 df = test_edi_271()

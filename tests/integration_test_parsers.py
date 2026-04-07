@@ -23,11 +23,10 @@ def test_json_weather():
     import pandas as pd
     with open("sample_data/json/weather_response.json") as f:
         data = json.load(f)
-    hourly = data["hourly"]
-    df = pd.DataFrame(hourly)
+    df = pd.DataFrame(data["hourly"])
     df["latitude"]  = data["latitude"]
     df["longitude"] = data["longitude"]
-    df["timezone"]  = data["time"]
+    df["time"] = df["time"].str.strip()
     return df
 
 def test_json_okta_users():
