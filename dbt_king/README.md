@@ -1,15 +1,18 @@
-Welcome to your new dbt project!
+# Enterprise Data Engineering Pipeline — End-to-End ELT/ETL System
+A production-grade data pipeline built across four phases, ingesting from 17 heterogeneous sources, transforming with dbt, orchestrating with Airflow, and deploying to GCP with Terraform.
 
-### Using the starter project
+# Phase 1 — Custom Ingestion Engine (Local)
+Built a plugin-based parser architecture in Python that ingests from REST APIs, CSV, pipe-delimited, tab-delimited, XML, SOAP, JSON, EDI X12, ANSI X12 5010 healthcare transactions (834, 835, 837P, 270, 271), fixed-width mainframe files, and NACHA ACH payment files. Each parser implements a common interface returning a normalised pandas DataFrame regardless of source format. Built a FastAPI inbound server accepting partner orders via REST, webhook events with HMAC-SHA256 signature verification, and raw EDI over HTTP. Built outbound delivery via signed webhooks, HTTP API calls with OAuth2, and EDI over SFTP. All inbound and outbound events tracked via an audit log, idempotency key deduplication, and a retry queue with exponential backoff and dead letter handling. Loaded all 17 sources into PostgreSQL using upsert with primary key constraints and source lineage metadata stamped on every row.
+Technologies: Python 3.12, FastAPI, pandas, psycopg2, PostgreSQL 16, Docker, Docker Compose, pyproject.toml
 
-Try running the following commands:
-- dbt run
-- dbt test
+# Phase 2 — Transformation with dbt
+Modelled raw data through a staging → marts layer using dbt. Staging models clean, type-cast, and rename columns. Mart models produce business-level aggregations including dim_members, fct_claims, fct_payments, and fct_eligibility. Added Okta as a new source, pulling users, groups, and login events via the Okta REST API and modelling alongside healthcare and order data. Applied dbt tests (not_null, unique, accepted_values, relationships) on all critical columns. Generated dbt documentation with column descriptions and data lineage graph. Used incremental models to process only new records on subsequent runs.
+Technologies: dbt Core, dbt-postgres, SQL, Jinja2, Okta REST API
 
+# Phase 3 — Orchestration with Apache Airflow
+Wrapped the full pipeline into an Airflow DAG running in Docker Compose. Extract tasks run in parallel, load waits for all extractors, dbt runs after load. Configured retries, SLA alerts, and backfill for historical reprocessing. Added Google Workspace as a new source, pulling Drive activity and user data via the Admin SDK. Integrated the outbound event router as an Airflow sensor task monitoring the outbound queue. Used Airflow Connections for all credentials — no hardcoded secrets anywhere in the codebase.
+Technologies: Apache Airflow, Docker Compose, Google Workspace Admin SDK, BashOperator, dbt-core
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+# Phase 4 — Cloud Deployment on GCP with Terraform
+Migrated the full stack to GCP with all infrastructure defined as Terraform code. Provisioned BigQuery datasets (raw, staging, marts), Cloud Storage buckets for raw file landing, Cloud Run for the inbound API, Secret Manager for credentials, and Pub/Sub for outbound event fan-out. Switched from dbt-postgres to dbt-bigquery with partitioned and clustered tables for cost efficiency. Replaced local Airflow with Cloud Composer. Added Okta identity federation with GCP for service account management. All resources reproducible from a single terraform apply.
+Technologies: Terraform, GCP, BigQuery, Cloud Storage, Cloud Run, Cloud Composer, Pub/Sub, Secret Manager, IAM, dbt-bigquery, Bash

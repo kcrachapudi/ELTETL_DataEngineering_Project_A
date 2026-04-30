@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: weather_json
+      - name: weather_stations
+      - name: partner_orders
+      - name: member_eligibility
+      - name: okta_users
+      - name: order_webhooks
+      - name: product_catalog
+      - name: soap_orders
+      - name: nacha_payments
+      - name: fw_members
+      - name: edi_850
+      - name: edi_856
+      - name: edi_834
+      - name: edi_837
+      - name: edi_835
+      - name: edi_270
+      - name: edi_271
