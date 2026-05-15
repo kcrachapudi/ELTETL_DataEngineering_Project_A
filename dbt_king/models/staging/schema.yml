@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_edi_834
+    columns:
+      - name: member_id
+        tests:
+          - not_null
+          - unique
+      - name: plan_id
+        tests:
+          - not_null
+      - name: effective_date
+        tests:
+          - not_null
+
+  - name: stg_edi_837
+    columns:
+      - name: claim_id
+        tests:
+          - not_null
+      - name: procedure_code
+        tests:
+          - not_null
+      - name: charge_amount
+        tests:
+          - not_null
+
+  - name: stg_edi_835
+    columns:
+      - name: claim_id
+        tests:
+          - not_null
+      - name: claim_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['processed_primary', 'processed_secondary', 'denied', 'reversal', 'processed_tertiary', 'processed_primary_forwarded']
+
+  - name: stg_edi_271
+    columns:
+      - name: subscriber_id
+        tests:
+          - not_null
+      - name: coverage_active
+        tests:
+          - not_null
+
+  - name: stg_member_eligibility
+    columns:
+      - name: member_id
+        tests:
+          - not_null
+          - unique
+      - name: plan_id
+        tests:
+          - not_null

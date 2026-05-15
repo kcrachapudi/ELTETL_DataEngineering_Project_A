@@ -16,8 +16,12 @@ renamed as (
         maintenance_type,
         plan_id,
         coverage_type,
-        effective_date::date   as effective_date,
-        termination_date::date as termination_date,
+        case when effective_date::text = 'NaN' then null
+            else effective_date::date
+        end                         as effective_date,
+        case when termination_date::text = 'NaN' then null
+            else termination_date::date
+        end                         as termination_date,        
         employer_name,
         payer_name,
         payer_id,

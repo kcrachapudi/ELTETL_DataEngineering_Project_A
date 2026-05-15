@@ -8,13 +8,17 @@ renamed as (
         subscriber_id,
         last_name,
         first_name,
-        dob::date                   as date_of_birth,
+        case when dob = 'NaN' then null
+            else dob::date
+        end                         as date_of_birth,
         gender,
         plan_id,
         group_number,
         employer_name,
         effective_date::date        as effective_date,
-        termination_date::date      as termination_date,
+        case when termination_date = 'NaN' then null
+            else termination_date::date
+        end                         as termination_date,        
         coverage_type,
         pcp_npi,
         _source_file                as source_file,
