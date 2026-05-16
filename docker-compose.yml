@@ -1,6 +1,5 @@
 services:
 
-  # ── PostgreSQL — local data warehouse ──────────────────────────────────────
   postgres:
     image: postgres:16-alpine
     container_name: pipeline_postgres
@@ -20,7 +19,6 @@ services:
       timeout: 5s
       retries: 10
 
-  # ── Inbound API server ──────────────────────────────────────────────────────
   api:
     build:
       context: .
@@ -45,7 +43,6 @@ services:
       - ./logs:/app/logs
       - ./sample_data:/app/sample_data
 
-  # ── pgAdmin — visual DB explorer (optional, comment out if not needed) ──────
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: pipeline_pgadmin
@@ -58,7 +55,7 @@ services:
     depends_on:
       - postgres
     profiles:
-      - debug   # only starts with: docker compose --profile debug up
+      - debug
 
 volumes:
   postgres_data:

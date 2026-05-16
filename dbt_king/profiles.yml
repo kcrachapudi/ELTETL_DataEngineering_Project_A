@@ -1,0 +1,12 @@
+dbt_king:
+  outputs:
+    dev:
+      dbname: pipeline_db
+      host: postgres
+      pass: changeme
+      port: 5432
+      schema: staging
+      threads: 4
+      type: postgres
+      user: pipeline_user
+  target: dev

@@ -5,7 +5,8 @@ import json
 
 def get_connection():
     return psycopg2.connect(
-        host="localhost", port=5432,
+        host="postgres",
+        port=5432,
         dbname="pipeline_db",
         user="pipeline_user",
         password="changeme"
